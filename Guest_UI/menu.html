@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Macoliz – Menu gọi món</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0f1a2d, #060b17);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    #page-menu {
+      width: 390px;
+      background: linear-gradient(180deg, #0b1220, #060b17);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 0 50px rgba(255, 61, 129, .25);
+    }
+
+    /* ===== HEADER ===== */
+    #header-room {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    #header-title {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    #header-code {
+      font-size: 12px;
+      color: #22d3ee;
+      margin-top: 2px;
+    }
+
+    #btn-call-staff {
+      background: linear-gradient(90deg, #ff9f1c, #ff3d81);
+      border: none;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* ===== CATEGORY ===== */
+    #category-list {
+      display: flex;
+      gap: 8px;
+      margin: 14px 0 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    #category-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #111827;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .category.active {
+      background: linear-gradient(90deg, #ff5ea8, #ff3d81);
+      border-color: transparent;
+    }
+
+    /* ===== FOOD CARD ===== */
+    .food-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+
+      background: linear-gradient(180deg, #0f1a2d, #0b1323);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .food-card.hidden {
+      display: none;
+    }
+
+    .food-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .food-thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .food-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .food-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ff5ea8;
+      margin-bottom: 4px;
+    }
+
+    .food-meta {
+      font-size: 13px;
+      color: #4ef0d2;
+    }
+
+    .food-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ff7ac8;
+      border: 1px solid #ff7ac8;
+      border-radius: 999px;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .qty {
+      min-width: 18px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* ===== CART ===== */
+    #cart-box {
+      margin-top: 18px;
+      background: linear-gradient(180deg, #020617, #020617);
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cart-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 6px 0;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin: 12px 0;
+    }
+
+    #btn-confirm {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #ff5ea0, #ff3d81);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #btn-continue {
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      border: 1px solid #334155;
+      background: transparent;
+      color: #fff;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="page-menu">
+
+    <!-- HEADER -->
+    <div id="header-room">
+      <div>
+        <div id="header-title">Phòng P101</div>
+        <div id="header-code">Mã xác nhận: MBB829</div>
+      </div>
+      <button id="btn-call-staff">🔔 Gọi nhân viên</button>
+    </div>
+
+    <strong>Menu gọi món</strong><br>
+    <small style="color:#94a3b8">Đơn hàng được gửi về quầy Macoliz Box</small>
+
+    <!-- CATEGORY -->
+    <div id="category-list">
+      <div class="category active" data-category="all">Tất cả</div>
+      <div class="category" data-category="drink">Nước uống</div>
+      <div class="category" data-category="beer">Bia</div>
+      <div class="category" data-category="snack">Đồ ăn vặt</div>
+      <div class="category" data-category="fruit">Trái cây</div>
+    </div>
+
+    <!-- ITEMS -->
+    <div class="food-card" data-category="drink">
+      <div class="food-left">
+        <div class="food-thumb">🥤</div>
+        <div>
+          <div class="food-name">Coca-Cola lon</div>
+          <div class="food-price">25.000đ</div>
+          <div class="food-meta">Nước uống · Ướp lạnh</div>
+        </div>
+      </div>
+      <div class="food-right">
+        <div class="badge">Best Seller</div>
+        <div class="qty-control">
+          <button class="qty-btn">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="food-card" data-category="beer">
+      <div class="food-left">
+        <div class="food-thumb">🥤</div>
+        <div>
+          <div class="food-name">Bia Tiger</div>
+          <div class="food-price">25.000đ</div>
+          <div class="food-meta">Nước uống · Ướp lạnh</div>
+        </div>
+      </div>
+      <div class="food-right">
+        <div class="badge">Best Seller</div>
+        <div class="qty-control">
+          <button class="qty-btn">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="snack">
+      <div class="food-left">
+        <div class="food-thumb">🍗</div>
+        <div>
+          <div class="food-name">Khô gà lá chanh</div>
+          <div class="food-price">50.000đ</div>
+          <div class="food-meta">Đồ ăn vặt · Đĩa nhỏ</div>
+        </div>
+      </div>
+      <div class="food-right">
+        <div class="badge">Best Seller</div>
+        <div class="qty-control">
+          <button class="qty-btn">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="snack">
+      <div class="food-left">
+        <div class="food-thumb">🍗</div>
+        <div>
+          <div class="food-name">Bim bim</div>
+          <div class="food-price">50.000đ</div>
+          <div class="food-meta">Đồ ăn vặt · Đĩa nhỏ</div>
+        </div>
+      </div>
+      <div class="food-right">
+        <div class="badge">Best Seller</div>
+        <div class="qty-control">
+          <button class="qty-btn">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="snack">
+      <div class="food-left">
+        <div class="food-thumb">🍗</div>
+        <div>
+          <div class="food-name">Cơm cháy</div>
+          <div class="food-price">50.000đ</div>
+          <div class="food-meta">Đồ ăn vặt · Đĩa nhỏ</div>
+        </div>
+      </div>
+      <div class="food-right">
+        <div class="badge">Best Seller</div>
+        <div class="qty-control">
+          <button class="qty-btn">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="snack">
+      <div class="food-left">
+        <div class="food-thumb">🍗</div>
+        <div>
+          <div class="food-name">Khô bò</div>
+          <div class="food-price">50.000đ</div>
+          <div class="food-meta">Đồ ăn vặt · Đĩa nhỏ</div>
+        </div>
+      </div>
+      <div class="food-right">
+        <div class="badge">Best Seller</div>
+        <div class="qty-control">
+          <button class="qty-btn">−</button>
+          <span class="qty">0</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <!-- CART -->
+    <div id="cart-box">
+      <strong>Đơn gọi món phòng P101</strong>
+      <div class="cart-line"><span></span><span></span></div>
+      <div class="cart-total"><span>Tạm tính</span><span></span></div>
+      <button id="btn-confirm">✈ Xác nhận gọi món</button>
+      <button id="btn-continue">Về Menu</button>
+    </div>
+
+  </div>
+
+  <script>
+    /* ===== CATEGORY FILTER ===== */
+    const categories = document.querySelectorAll('.category');
+    const items = document.querySelectorAll('.food-card');
+
+    categories.forEach(cat => {
+      cat.onclick = () => {
+        categories.forEach(c => c.classList.remove('active'));
+        cat.classList.add('active');
+        const type = cat.dataset.category;
+
+        items.forEach(item => {
+          item.classList.toggle(
+            'hidden',
+            type !== 'all' && item.dataset.category !== type
+          );
+        });
+      };
+    });
+
+
+
+
+    /* ===== CART LOGIC ===== */
+    const cartBox = document.getElementById('cart-box');
+    const cartLinesContainer = cartBox.querySelector('.cart-line').parentNode;
+    const totalEl = cartBox.querySelector('.cart-total span:last-child');
+
+    function parsePrice(priceText) {
+      return Number(priceText.replace(/\D/g, ''));
+    }
+
+    function formatPrice(number) {
+      return number.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function updateCart() {
+      let total = 0;
+
+      // Xóa các dòng món cũ (giữ lại total + button)
+      cartBox.querySelectorAll('.cart-item').forEach(el => el.remove());
+
+      document.querySelectorAll('.food-card').forEach(card => {
+        const qty = Number(card.querySelector('.qty').innerText);
+        if (qty > 0) {
+          const name = card.querySelector('.food-name').innerText;
+          const price = parsePrice(card.querySelector('.food-price').innerText);
+          const lineTotal = qty * price;
+          total += lineTotal;
+
+          const line = document.createElement('div');
+          line.className = 'cart-line cart-item';
+          line.innerHTML = `
+          <span>${name} × ${qty}</span>
+          <span>${formatPrice(lineTotal)}</span>
+        `;
+          cartBox.insertBefore(line, cartBox.querySelector('.cart-total'));
+        }
+      });
+
+      totalEl.innerText = formatPrice(total);
+    }
+
+    /* ===== QTY BUTTONS ===== */
+    document.querySelectorAll('.food-card').forEach(card => {
+      const minusBtn = card.querySelector('.qty-btn:first-child');
+      const plusBtn = card.querySelector('.qty-btn:last-child');
+      const qtyEl = card.querySelector('.qty');
+
+      minusBtn.onclick = () => {
+        let qty = Number(qtyEl.innerText);
+        if (qty > 0) {
+          qtyEl.innerText = qty - 1;
+          updateCart();
+        }
+      };
+
+      plusBtn.onclick = () => {
+        let qty = Number(qtyEl.innerText);
+        qtyEl.innerText = qty + 1;
+        updateCart();
+      };
+    });
+
+    // Init
+    updateCart();
+  </script>
+  <script>
+    document.getElementById("btn-confirm").onclick = () => {
+      window.location.href = "guest_home.html";
+    };
+
+    document.getElementById("btn-continue").onclick = () => {
+      window.location.href = "guest_home.html";
+    };
+  </script>
+
+</body>
+
+</html>

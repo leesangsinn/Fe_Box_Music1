@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macoliz Box | Đăng nhập</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/Guest/style.css" />
+  <link rel="stylesheet" href="../css/Guest/login.css" />
+</head>
+
+<body class="login-page">
+  <div class="login-wrapper">
+
+    <!-- Logo -->
+    <div class="brand-logo">
+      <div class="brand-icon">
+        <iconify-icon icon="lucide:music"></iconify-icon>
+      </div>
+      <span class="brand-yellow">MACOLIZ</span>
+      <span class="brand-purple">BOX</span>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card">
+      <div class="card-header">
+        <h1 class="card-title">Đăng nhập</h1>
+        <p class="card-subtitle">
+          Tài khoản được cấp bởi quản trị viên hệ thống
+        </p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+
+        <!-- Username -->
+        <div class="form-group">
+          <label class="form-label">Tên đăng nhập</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <iconify-icon icon="lucide:user"></iconify-icon>
+            </span>
+            <input
+              type="text"
+              id="username"
+              class="form-input"
+              placeholder="Nhập tên đăng nhập"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label">Mật khẩu</label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <iconify-icon icon="lucide:lock"></iconify-icon>
+            </span>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              placeholder="Nhập mật khẩu"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Forgot password -->
+        <div class="forgot-password">
+          <a href="forgot-password.html" class="forgot-link">
+            Quên mật khẩu?
+          </a>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn">
+          Đăng nhập
+        </button>
+
+        <!-- Info (NO REGISTER) -->
+        <p class="footer-text">
+          Nếu bạn chưa có tài khoản, vui lòng liên hệ quản trị viên.
+        </p>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="../js/js/auth.js"></script>
+
+  <!-- Iconify -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+</body>
+</html>

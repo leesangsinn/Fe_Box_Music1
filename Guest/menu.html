@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Macoliz – Menu gọi món</title>
+
+<style>
+*{box-sizing:border-box;font-family:Inter,system-ui}
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#3a124d,#020617);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+#page-menu{
+  width:390px;
+  background:#0b1220;
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 0 40px rgba(255,0,128,.2);
+}
+
+/* HEADER */
+#header-room{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+#header-title{font-weight:700}
+#header-code{font-size:12px;color:#22d3ee}
+#btn-call-staff{
+  background:linear-gradient(90deg,#ff9f1c,#ff3d81);
+  border:none;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+/* CATEGORY */
+#category-list{
+  display:flex;
+  gap:8px;
+  margin:12px 0;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+#category-list::-webkit-scrollbar{display:none}
+#category-list{scrollbar-width:none}
+
+.category{
+  padding:6px 14px;
+  border-radius:20px;
+  background:#111827;
+  font-size:12px;
+  white-space:nowrap;
+  cursor:pointer;
+  scroll-snap-align:start;
+}
+.category.active{
+  background:#ff3d81;
+}
+
+/* ITEM */
+.menu-item{
+  background:#0f172a;
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+.menu-item.hidden{display:none}
+
+.item-info{display:flex;gap:10px}
+.item-icon{
+  width:40px;height:40px;
+  border-radius:10px;
+  background:#1e293b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.item-name{font-weight:600}
+.item-price{color:#ff3d81;font-size:13px}
+.item-desc{font-size:11px;color:#94a3b8}
+
+.badge{
+  background:#ff3d81;
+  font-size:10px;
+  padding:2px 8px;
+  border-radius:10px;
+}
+
+.btn-add{
+  width:34px;height:34px;
+  border-radius:50%;
+  border:none;
+  background:#ff3d81;
+  color:#fff;
+  font-size:18px;
+}
+
+/* CART */
+#cart-box{
+  margin-top:14px;
+  background:#020617;
+  border-radius:14px;
+  padding:12px;
+}
+.cart-line{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  margin:6px 0;
+}
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  margin:10px 0;
+}
+
+#btn-confirm{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#ff5ea0,#ff3d81);
+  color:#fff;
+  font-weight:700;
+}
+#btn-continue{
+  width:100%;
+  padding:12px;
+  border-radius:30px;
+  border:1px solid #334155;
+  background:transparent;
+  color:#fff;
+  margin-top:8px;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div id="page-menu">
+
+  <!-- HEADER -->
+  <div id="header-room">
+    <div>
+      <div id="header-title">Phòng P101</div>
+      <div id="header-code">Mã xác nhận: MBB829</div>
+    </div>
+    <button id="btn-call-staff">🔔 Gọi nhân viên</button>
+  </div>
+
+  <strong>Menu gọi món</strong><br>
+  <small>Đơn hàng được gửi về quầy Macoliz Box</small>
+
+  <!-- CATEGORY -->
+  <div id="category-list">
+    <div class="category active" data-category="all">Tất cả</div>
+    <div class="category" data-category="drink">Nước uống</div>
+    <div class="category" data-category="beer">Bia</div>
+    <div class="category" data-category="snack">Đồ ăn vặt</div>
+    <div class="category" data-category="fruit">Trái cây</div>
+  </div>
+
+  <!-- ITEMS -->
+  <div class="menu-item" data-category="drink">
+    <div class="item-info">
+      <div class="item-icon">🥤</div>
+      <div>
+        <div class="item-name">Coca-Cola lon</div>
+        <div class="item-price">25.000đ</div>
+        <div class="item-desc">Nước uống · Ướp lạnh</div>
+      </div>
+    </div>
+    <button class="btn-add">+</button>
+  </div>
+
+  <div class="menu-item" data-category="drink">
+    <div class="item-info">
+      <div class="item-icon">🥤</div>
+      <div>
+        <div class="item-name">Pepsi lon</div>
+        <div class="item-price">25.000đ</div>
+        <div class="item-desc">Nước uống · Ướp lạnh</div>
+      </div>
+    </div>
+    <button class="btn-add">+</button>
+  </div>
+
+  <div class="menu-item" data-category="beer">
+    <div class="item-info">
+      <div class="item-icon">🍺</div>
+      <div>
+        <div class="item-name">Bia Heineken <span class="badge">Best Seller</span></div>
+        <div class="item-price">35.000đ</div>
+        <div class="item-desc">Bia · Lon 330ml</div>
+      </div>
+    </div>
+    <button class="btn-add">+</button>
+  </div>
+
+  <div class="menu-item" data-category="snack">
+    <div class="item-info">
+      <div class="item-icon">🍗</div>
+      <div>
+        <div class="item-name">Khô gà lá chanh <span class="badge">Best Seller</span></div>
+        <div class="item-price">50.000đ</div>
+        <div class="item-desc">Đồ ăn vặt · Đĩa nhỏ</div>
+      </div>
+    </div>
+    <button class="btn-add">+</button>
+  </div>
+
+  <div class="menu-item" data-category="fruit">
+    <div class="item-info">
+      <div class="item-icon">🍉</div>
+      <div>
+        <div class="item-name">Trái cây thập cẩm</div>
+        <div class="item-price">60.000đ</div>
+        <div class="item-desc">Trái cây · 2–3 người</div>
+      </div>
+    </div>
+    <button class="btn-add">+</button>
+  </div>
+
+  <!-- CART -->
+  <div id="cart-box">
+    <strong>Đơn gọi món phòng P101</strong>
+    <div class="cart-line"><span>1× Khô gà lá chanh</span><span>50.000đ</span></div>
+    <div class="cart-line"><span>1× Bia Heineken</span><span>35.000đ</span></div>
+    <div class="cart-total"><span>Tạm tính</span><span>85.000đ</span></div>
+    <button id="btn-confirm">✈ Xác nhận gọi món</button>
+    <button id="btn-continue">Xem Order của bạn</button>
+  </div>
+
+</div>
+
+<script>
+const categories = document.querySelectorAll('.category');
+const items = document.querySelectorAll('.menu-item');
+
+categories.forEach(cat=>{
+  cat.addEventListener('click',()=>{
+    categories.forEach(c=>c.classList.remove('active'));
+    cat.classList.add('active');
+
+    const type = cat.dataset.category;
+
+    items.forEach(item=>{
+      if(type === 'all' || item.dataset.category === type){
+        item.classList.remove('hidden');
+      }else{
+        item.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

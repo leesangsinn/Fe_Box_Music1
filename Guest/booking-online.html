@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt phòng trực tuyến | Macoliz Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Guest/booking-online.css">
+</head>
+<body class="booking-online-body">
+    <div class="booking-online-layout">
+        <aside class="booking-online-side">
+            <div class="booking-side-card">
+                <div class="brand">
+                    <img class="brand-logo" src="assets/brand-logo.png" alt="Macoliz Box">
+                    <span class="brand-text">Macoliz Box</span>
+                </div>
+                <p class="brand-desc">
+                    Macoliz Box là mô hình phòng hát, thu âm đầu tiên tại Việt Nam mang phong cách Hàn Quốc.
+                    Không gian chính là các box mini dành cho các cặp đôi và nhóm, với âm thanh và ánh sáng cực chill.
+                </p>
+                <div class="support">
+                    <h4>HỖ TRỢ ĐẶT PHÒNG</h4>
+                    <div class="support-item">
+                        <span class="support-icon">✉</span>
+                        musicbox.customers@gmail.com
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="booking-online-main">
+            <header class="booking-online-header">
+                <div class="breadcrumb">
+                    <span class="home-icon">🏠</span>
+                    <span>/ Đặt phòng trực tuyến</span>
+                </div>
+                <a class="lookup-btn" href="#lookup-modal">Tra cứu đặt phòng</a>
+            </header>
+
+            <section class="stepper">
+                <div class="step active">
+                    <span>1</span>
+                    <p>THÔNG TIN ĐẶT PHÒNG</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <span>2</span>
+                    <p>THÔNG TIN LIÊN LẠC</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <span>3</span>
+                    <p>HOÀN TẤT</p>
+                </div>
+            </section>
+
+            <section class="booking-form-card">
+                <div class="booking-form-grid">
+                    <div class="form-field">
+                        <label>Chọn cơ sở</label>
+                        <select id="branchSelect">
+                            <option value="">Chọn cơ sở</option>
+                            <option>CN 01 - Cầu Giấy</option>
+                            <option>CN 02 - Hà Đông</option>
+                            <option>CN 03 - Hoàn Kiếm</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Chọn phòng</label>
+                        <select id="roomSelect">
+                            <option value="">Chọn phòng</option>
+                            <option value="S">S Box (1-2 người)</option>
+                            <option value="M">M Box (3-4 người)</option>
+                            <option value="L">L Box (5-8 người)</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Chọn ngày</label>
+                        <input id="dateSelect" type="date" value="2026-02-05">
+                    </div>
+                    <div class="form-field form-field-row">
+                        <div>
+                            <label>Chọn giờ</label>
+                            <select id="timeSelect">
+                                <option value="">Giờ bắt đầu</option>
+                                <option value="09:00">09:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Thời gian</label>
+                            <select id="durationSelect">
+                                <option value="">Thời gian</option>
+                                <option value="1">45 phút</option>
+                                <option value="2">2 giờ</option>
+                                <option value="3">3 giờ</option>
+                                <option value="4">4 giờ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pricing-board" id="pricingBoard">
+                <div class="pricing-header">
+                    <strong>Bảng giá tham khảo</strong>
+                    <span>Áp dụng theo khung giờ</span>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-row">
+                        <span class="pricing-label">09:00 - 12:00</span>
+                        <div class="pricing-tags">
+                            <span>30K</span>
+                        </div>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">12:00 - 18:00</span>
+                        <div class="pricing-tags">
+                            <span>40K</span>
+                            <span>50K</span>
+                            <span>60K</span>
+                        </div>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">Sau 18:00</span>
+                        <div class="pricing-tags">
+                            <span>80K</span>
+                            <span>100K</span>
+                            <span>120K</span>
+                        </div>
+                    </div>
+                    <div class="pricing-note">Áp dụng từ Thứ 2 - Thứ 6</div>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-row">
+                        <span class="pricing-label">09:00 - 12:00</span>
+                        <div class="pricing-tags">
+                            <span>30K</span>
+                        </div>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">12:00 - 18:00</span>
+                        <div class="pricing-tags">
+                            <span>50K</span>
+                            <span>60K</span>
+                            <span>70K</span>
+                        </div>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="pricing-label">Sau 18:00</span>
+                        <div class="pricing-tags">
+                            <span>90K</span>
+                            <span>110K</span>
+                            <span>130K</span>
+                        </div>
+                    </div>
+                    <div class="pricing-note highlight">Áp dụng cuối tuần &amp; ngày lễ</div>
+                </div>
+                <div class="pricing-address">
+                    📍 Số 18, lô 2, ngõ 67 Phùng Khoang, Hà Nội
+                </div>
+            </section>
+
+            <section class="booking-payment">
+                <div>
+                    <p>Số tiền cần thanh toán</p>
+                    <strong id="priceOutput">0 VND</strong>
+                </div>
+                <a class="booking-submit" href="booking-contact.html">Đặt phòng</a>
+            </section>
+        </main>
+    </div>
+    <section id="lookup-modal" class="lookup-overlay">
+        <div class="lookup-modal">
+            <a class="lookup-close" href="#">✕</a>
+            <h2>Tra cứu thông tin đặt phòng</h2>
+            <label>Số điện thoại <span class="required">*</span></label>
+            <input type="text" placeholder="Nhập số điện thoại đặt phòng">
+            <a class="lookup-submit" href="booking-lookup.html">Xác nhận</a>
+        </div>
+    </section>
+    <script>
+        const branchSelect = document.getElementById('branchSelect');
+        const roomSelect = document.getElementById('roomSelect');
+        const dateSelect = document.getElementById('dateSelect');
+        const timeSelect = document.getElementById('timeSelect');
+        const durationSelect = document.getElementById('durationSelect');
+        const priceOutput = document.getElementById('priceOutput');
+        const pricingBoard = document.getElementById('pricingBoard');
+
+        function formatVnd(value) {
+            return value.toLocaleString('vi-VN') + ' VND';
+        }
+
+        function isWeekend(dateStr) {
+            if (!dateStr) return false;
+            const date = new Date(dateStr + 'T00:00:00');
+            const day = date.getDay();
+            return day === 0 || day === 6;
+        }
+
+        function getBasePrice(timeValue, isWeekendFlag) {
+            if (!timeValue) return 0;
+            if (timeValue >= '18:00') return isWeekendFlag ? 130000 : 120000;
+            if (timeValue >= '12:00') return isWeekendFlag ? 70000 : 60000;
+            return 30000;
+        }
+
+        function calculatePrice() {
+            const branch = branchSelect.value;
+            pricingBoard.style.display = branch ? 'block' : 'none';
+
+            const time = timeSelect.value;
+            const duration = parseFloat(durationSelect.value || '0');
+            const weekendFlag = isWeekend(dateSelect.value);
+            const base = getBasePrice(time, weekendFlag);
+
+            if (!branch || !time || !duration || !roomSelect.value) {
+                priceOutput.textContent = '0 VND';
+                return;
+            }
+
+            const multiplier = duration === 1 ? 0.75 : duration;
+            const total = Math.round(base * multiplier);
+            priceOutput.textContent = formatVnd(total);
+        }
+
+        [branchSelect, roomSelect, dateSelect, timeSelect, durationSelect].forEach(el => {
+            el.addEventListener('change', calculatePrice);
+        });
+        calculatePrice();
+    </script>
+</body>
+</html>

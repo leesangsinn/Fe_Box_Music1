@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đại Tiệc Âm Nhạc Cuối Năm - Macoliz Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Guest/blogstyle.css">
+    <link rel="stylesheet" href="../css/Guest/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Additional styles for blog detail page */
+        .breadcrumb {
+            padding: 30px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-neon);
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+        }
+
+        .blog-header {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: rgba(255, 0, 153, 0.1);
+            border: 1px solid var(--primary-neon);
+            color: var(--primary-neon);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .blog-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, var(--primary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            margin: 0 auto 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #1a0a2e, #2d1b4e);
+            border: 1px solid rgba(255, 0, 153, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .blog-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .blog-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 50px 0 25px;
+            color: var(--text-light);
+        }
+
+        .blog-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: var(--text-light);
+        }
+
+        .blog-content p {
+            margin-bottom: 25px;
+            color: var(--text-muted);
+        }
+
+        .blog-content ul {
+            margin: 25px 0;
+            padding-left: 30px;
+        }
+
+        .blog-content li {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .blog-content li::marker {
+            color: var(--primary-neon);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(255, 0, 153, 0.1));
+            border-left: 4px solid var(--primary-neon);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(255, 0, 153, 0.2));
+            border: 1px solid rgba(255, 0, 153, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 60px auto;
+            max-width: 700px;
+        }
+
+        .cta-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            margin-bottom: 30px;
+        }
+
+        .related-posts {
+            padding: 80px 20px;
+            background: rgba(10, 0, 20, 0.5);
+            margin-top: 80px;
+        }
+
+        .related-posts h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .share-btn:hover {
+            background: var(--primary-neon);
+            border-color: var(--primary-neon);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 32px;
+            }
+
+            .blog-featured-image {
+                height: 300px;
+            }
+
+            .blog-content {
+                font-size: 16px;
+            }
+
+            .blog-content h2 {
+                font-size: 24px;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $(function() {
+            $("#header-placeholder").load("homeheader.html");
+            $("#footer-placeholder").load("homefooter.html");
+        });
+    </script>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Trang chủ</a>
+                <span>→</span>
+                <a href="index.html#blog">Blog</a>
+                <span>→</span>
+                <span style="color: var(--text-light);">Đại Tiệc Âm Nhạc Cuối Năm</span>
+            </div>
+        </div>
+
+        <article>
+            <div class="blog-header">
+                <div class="blog-category">Sự kiện đặc biệt</div>
+                <h1 class="blog-title">Đại Tiệc Âm Nhạc Cuối Năm: Giảm 50% Giá Hát Cho Nhóm Trên 10 Người</h1>
+                <div class="blog-meta">
+                    <span>📅 7 Tháng 12, 2025</span>
+                    <span>👤 Macoliz Box</span>
+                    <span>⏱️ 5 phút đọc</span>
+                </div>
+            </div>
+
+            <div class="blog-featured-image">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">🎤</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 24px; font-weight: 900;">ĐẠI TIỆC ÂM NHẠC</div>
+                </div>
+            </div>
+
+            <div class="blog-content">
+                <p>Một năm vừa qua, Macoliz Box đã tổ chức rất nhiều chương trình đặc biệt để ghi nhận và tri ân khách hàng trong những hoạt động với câu lạc bộ về cuối năm. Và để kết thúc năm 2025 một cách hoành tráng, chúng tôi xin giới thiệu chương trình <strong>Đại Tiệc Âm Nhạc Cuối Năm</strong> với ưu đãi cực khủng!</p>
+
+                <h2>Ưu Đãi Đặc Biệt: Giảm 50% Giá Hát</h2>
+                
+                <p>Macoliz Box tung ra chương trình khuyến mãi lớn nhất trong năm dành cho các nhóm bạn, đồng nghiệp, hoặc gia đình muốn sum họp và hát karaoke cùng nhau:</p>
+
+                <ul>
+                    <li><strong>Giảm 50% giá phòng</strong> cho các nhóm từ 10 người trở lên</li>
+                    <li>Áp dụng cho tất cả các loại phòng VIP và Standard</li>
+                    <li>Miễn phí nước uống và đồ ăn nhẹ cho nhóm trên 15 người</li>
+                    <li>Tặng kèm 2 giờ hát miễn phí khi đặt từ 4 giờ trở lên</li>
+                    <li>Ưu đãi áp dụng từ nay đến hết 31/12/2025</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>"Đây là cơ hội tuyệt vời để bạn và nhóm của mình tận hưởng những giây phút âm nhạc tuyệt vời với mức giá cực kỳ ưu đãi. Đừng bỏ lỡ!"</p>
+                </div>
+
+                <h2>Không Gian & Thiết Bị Thượng Đẳng Của Macoliz Box</h2>
+
+                <p>Macoliz Box tự hào mang đến cho khách hàng những trải nghiệm karaoke đỉnh cao với:</p>
+
+                <h3>Hệ Thống Âm Thanh Chuyên Nghiệp</h3>
+                <ul>
+                    <li>Dàn loa JBL cao cấp với công suất lớn, âm thanh trong trẻo</li>
+                    <li>Micro không dây Shure chống hú, chống ồn</li>
+                    <li>Mixer digital với khả năng tùy chỉnh âm thanh theo sở thích</li>
+                    <li>Thư viện nhạc cập nhật hàng tuần với hơn 50,000 bài hát</li>
+                </ul>
+
+                <h3>Phòng Hát Sang Trọng & Hiện Đại</h3>
+                <p>Mỗi phòng hát tại Macoliz Box được thiết kế với phong cách riêng biệt, kết hợp giữa sự sang trọng và hiện đại. Đèn LED đa sắc màu tạo không khí sôi động, ghế sofa cao cấp mang lại sự thoải mái tối đa.</p>
+
+                <h2>Cách Thức Đặt Phòng</h2>
+
+                <p>Để tận hưởng ưu đãi này, bạn chỉ cần:</p>
+
+                <ul>
+                    <li>Gọi hotline: <strong>1900-xxxx</strong> để đặt phòng trước</li>
+                    <li>Đặt phòng qua website hoặc ứng dụng di động Macoliz Box</li>
+                    <li>Ghé trực tiếp chi nhánh gần nhất để được tư vấn và đặt phòng</li>
+                    <li>Xuất trình mã giảm giá khi check-in để nhận ưu đãi</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Lưu ý:</strong> Số lượng phòng có ưu đãi có hạn. Hãy đặt phòng sớm để không bỏ lỡ cơ hội này!</p>
+                </div>
+
+                <h2>Cam Kết Của Chúng Tôi</h2>
+
+                <p>Tại Macoliz Box, chúng tôi cam kết mang đến cho khách hàng:</p>
+
+                <ul>
+                    <li>Dịch vụ chăm sóc khách hàng 24/7</li>
+                    <li>Vệ sinh sạch sẽ, khử trùng định kỳ</li>
+                    <li>An ninh, an toàn tuyệt đối</li>
+                    <li>Giá cả minh bạch, không phát sinh chi phí ẩn</li>
+                    <li>Đội ngũ nhân viên chuyên nghiệp, nhiệt tình</li>
+                </ul>
+
+                <div class="share-buttons">
+                    <a href="#" class="share-btn" title="Chia sẻ trên Facebook">📘</a>
+                    <a href="#" class="share-btn" title="Chia sẻ trên Twitter">🐦</a>
+                    <a href="#" class="share-btn" title="Chia sẻ trên Instagram">📷</a>
+                    <a href="#" class="share-btn" title="Sao chép link">🔗</a>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Sẵn Sàng Đặt Phòng?</h3>
+                    <p>Đừng bỏ lỡ cơ hội giảm giá 50% cho nhóm của bạn. Đặt phòng ngay hôm nay!</p>
+                    <a href="#" class="cta-button">Đặt Phòng Ngay</a>
+                </div>
+            </div>
+        </article>
+
+        <section class="related-posts">
+            <div class="container">
+                <h2>Bài Viết Liên Quan</h2>
+                <div class="grid">
+                    <div class="card reveal">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Top 10 bài hát Karaoke dễ hát nhất cho giọng nam trầm</h3>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Combo ghép nhạc mang giọt âm sở trường</h3>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Những âm trường nên tránh khi hát theo Cancleak mua hy</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Đăng Nhập Nhân Viên</h2>
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                <button type="submit" class="primary-btn">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

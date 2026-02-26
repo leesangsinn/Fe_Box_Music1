@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Macoliz – View Order</title>
+
+<style>
+/* ========== RESET & BASE ========== */
+*{
+  box-sizing:border-box;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#3a124d,#020617);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+/* ========== APP CONTAINER ========== */
+#app{
+  width:390px;
+  background:#0b1220;
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 0 40px rgba(255,0,128,.25);
+}
+
+/* ========== HEADER ========== */
+#header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+#btn-back{
+  width:34px;height:34px;
+  border-radius:50%;
+  border:1px solid #334155;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+}
+#header-title{font-weight:700}
+#header-code{
+  font-size:12px;
+  color:#22d3ee;
+}
+#header-cart{
+  position:relative;
+  font-size:18px;
+}
+#cart-badge{
+  position:absolute;
+  top:-6px;right:-6px;
+  background:#ff3d81;
+  width:18px;height:18px;
+  border-radius:50%;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ========== SECTION TITLE ========== */
+#section-title{
+  font-weight:700;
+  margin-bottom:4px;
+}
+#section-subtitle{
+  font-size:12px;
+  color:#94a3b8;
+  margin-bottom:12px;
+}
+
+/* ========== ORDER ITEM ========== */
+.order-item{
+  background:#0f172a;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:10px;
+}
+.order-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.order-name{font-weight:600}
+.order-qty{
+  font-size:12px;
+  background:#1e293b;
+  padding:2px 8px;
+  border-radius:8px;
+  margin-left:6px;
+}
+.order-price{
+  color:#ff3d81;
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* ========== STATUS – TINH TẾ NHƯ APP ========== */
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  padding:6px 12px;
+  border-radius:999px;
+
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.2px;
+
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+
+  border:1px solid transparent;
+  white-space:nowrap;
+}
+.status-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+}
+
+/* ĐÃ GIAO */
+.status-done{
+  color:#5CFF9D;
+  background:linear-gradient(
+    180deg,
+    rgba(92,255,157,.14),
+    rgba(92,255,157,.05)
+  );
+  border-color:rgba(92,255,157,.35);
+  box-shadow:
+    0 0 0 1px rgba(92,255,157,.05),
+    0 4px 12px rgba(92,255,157,.15);
+}
+.status-done .status-dot{
+  background:#5CFF9D;
+  box-shadow:0 0 6px rgba(92,255,157,.9);
+}
+
+/* CHỜ XÁC NHẬN */
+.status-pending{
+  color:#FFD666;
+  background:linear-gradient(
+    180deg,
+    rgba(255,214,102,.16),
+    rgba(255,214,102,.06)
+  );
+  border-color:rgba(255,214,102,.4);
+  box-shadow:
+    0 0 0 1px rgba(255,214,102,.06),
+    0 4px 12px rgba(255,214,102,.18);
+}
+.status-pending .status-dot{
+  background:#FFD666;
+  box-shadow:0 0 6px rgba(255,214,102,.9);
+}
+
+/* ========== SUMMARY ========== */
+#summary{
+  margin-top:14px;
+  padding-top:10px;
+  border-top:1px dashed #1e293b;
+}
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  margin:6px 0;
+}
+#summary-total{
+  font-weight:700;
+}
+#summary-total span:last-child{
+  color:#ff3d81;
+}
+
+/* ========== ACTIONS ========== */
+#actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+#btn-call-staff{
+  flex:1;
+  padding:12px;
+  border-radius:30px;
+  border:1px solid #334155;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+}
+#btn-add-more{
+  flex:1;
+  padding:12px;
+  border-radius:30px;
+  border:none;
+  background:linear-gradient(90deg,#ff5ea0,#ff3d81);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ========== FOOTER NOTE ========== */
+#footer-note{
+  text-align:center;
+  font-size:11px;
+  color:#64748b;
+  margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- HEADER -->
+  <div id="header">
+    <button id="btn-back">←</button>
+    <div>
+      <div id="header-title">Phòng P101</div>
+      <div id="header-code">Mã xác nhận: MBB829</div>
+    </div>
+    <div id="header-cart">
+      🧾
+      <div id="cart-badge">3</div>
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <div id="section-title">Danh sách món đã gọi</div>
+  <div id="section-subtitle">Các món bạn đã order cho phòng này</div>
+
+  <!-- ORDER ITEMS -->
+  <div id="order-heineken" class="order-item">
+    <div class="order-top">
+      <div>
+        <span class="order-name">Bia Heineken</span>
+        <span class="order-qty">x2</span>
+      </div>
+      <div class="status status-done">
+        <span class="status-dot"></span>Đã giao
+      </div>
+    </div>
+    <div class="order-price">70.000đ</div>
+  </div>
+
+  <div id="order-khoga" class="order-item">
+    <div class="order-top">
+      <div>
+        <span class="order-name">Khô gà lá chanh</span>
+        <span class="order-qty">x1</span>
+      </div>
+      <div class="status status-done">
+        <span class="status-dot"></span>Đã giao
+      </div>
+    </div>
+    <div class="order-price">50.000đ</div>
+  </div>
+
+  <div id="order-coca" class="order-item">
+    <div class="order-top">
+      <div>
+        <span class="order-name">Coca-Cola lon</span>
+        <span class="order-qty">x1</span>
+      </div>
+      <div class="status status-pending">
+        <span class="status-dot"></span>Chờ xác nhận
+      </div>
+    </div>
+    <div class="order-price">25.000đ</div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div id="summary">
+    <div class="summary-line">
+      <span>Tạm tính</span>
+      <span>145.000đ</span>
+    </div>
+    <div class="summary-line">
+      <span>Phí dịch vụ (5%)</span>
+      <span>7.250đ</span>
+    </div>
+    <div id="summary-total" class="summary-line">
+      <span>Tổng cộng</span>
+      <span>152.250đ</span>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div id="actions">
+    <button id="btn-call-staff">Gọi nhân viên</button>
+    <button id="btn-add-more">Gọi thêm món</button>
+  </div>
+
+  <div id="footer-note">
+    Trạng thái món sẽ được cập nhật theo thời gian thực
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Macoliz – Giỏ hàng</title>
+
+<style>
+*{box-sizing:border-box;font-family:Inter,system-ui}
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(circle at top,#3a124d,#020617);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+}
+
+#page-cart{
+  width:390px;
+  background:#0b1220;
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 0 40px rgba(255,0,128,.2);
+}
+
+/* HEADER */
+#header-room{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+#btn-back{
+  width:34px;height:34px;
+  border-radius:50%;
+  border:none;
+  background:#1e293b;
+  color:#fff;
+  font-size:16px;
+}
+#header-title{font-weight:700}
+#header-code{font-size:12px;color:#22d3ee}
+
+#btn-call-staff{
+  background:linear-gradient(90deg,#ff9f1c,#ff3d81);
+  border:none;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+/* TITLE */
+#cart-title{
+  font-size:14px;
+  margin:10px 0;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+#cart-title::before{
+  content:"";
+  width:4px;height:14px;
+  background:#ff3d81;
+  border-radius:2px;
+}
+
+/* ITEM */
+.cart-item{
+  background:#0f172a;
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+.item-info{
+  display:flex;
+  gap:10px;
+}
+.item-icon{
+  width:40px;height:40px;
+  border-radius:10px;
+  background:#1e293b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.item-name{font-weight:600;font-size:14px}
+.item-price{color:#ff3d81;font-size:13px}
+
+.item-status{
+  font-size:10px;
+  padding:3px 8px;
+  border-radius:10px;
+  background:#020617;
+  color:#94a3b8;
+  margin-bottom:6px;
+  text-align:center;
+}
+.item-status.done{
+  background:rgba(34,211,238,.15);
+  color:#22d3ee;
+}
+
+.qty-box{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.btn-qty{
+  width:26px;height:26px;
+  border-radius:50%;
+  border:none;
+  background:#1e293b;
+  color:#fff;
+  font-size:14px;
+}
+.qty-text{
+  width:18px;
+  text-align:center;
+  font-size:14px;
+}
+
+/* SUMMARY */
+#cart-summary{
+  margin-top:14px;
+  background:#020617;
+  border-radius:14px;
+  padding:12px;
+}
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  margin:6px 0;
+  color:#cbd5f5;
+}
+.summary-total{
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  margin-top:10px;
+}
+#total-value{color:#ff3d81}
+
+/* ACTION */
+#btn-confirm{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#ff5ea0,#ff3d81);
+  color:#fff;
+  font-weight:700;
+  margin-top:12px;
+}
+#btn-continue{
+  width:100%;
+  padding:12px;
+  border-radius:30px;
+  border:1px solid #334155;
+  background:transparent;
+  color:#fff;
+  margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="page-cart">
+
+  <!-- HEADER -->
+  <div id="header-room">
+    <button id="btn-back">←</button>
+    <div>
+      <div id="header-title">Phòng P101</div>
+      <div id="header-code">Mã xác nhận: MBB829</div>
+    </div>
+    <button id="btn-call-staff">🔔 Gọi nhân viên</button>
+  </div>
+
+  <!-- TITLE -->
+  <div id="cart-title">Danh sách món đã chọn</div>
+
+  <!-- ITEM 1 -->
+  <div id="cart-item-heineken" class="cart-item">
+    <div class="item-info">
+      <div class="item-icon">🍺</div>
+      <div>
+        <div class="item-name">Bia Heineken</div>
+        <div class="item-price">35.000đ</div>
+      </div>
+    </div>
+    <div>
+      <div id="status-heineken" class="item-status done">Đã phục vụ</div>
+      <div class="qty-box">
+        <button id="btn-minus-heineken" class="btn-qty">−</button>
+        <div id="qty-heineken" class="qty-text">5</div>
+        <button id="btn-plus-heineken" class="btn-qty">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEM 2 -->
+  <div id="cart-item-khoga" class="cart-item">
+    <div class="item-info">
+      <div class="item-icon">🍗</div>
+      <div>
+        <div class="item-name">Khô gà lá chanh</div>
+        <div class="item-price">50.000đ</div>
+      </div>
+    </div>
+    <div>
+      <div id="status-khoga" class="item-status">Chờ xác nhận</div>
+      <div class="qty-box">
+        <button id="btn-minus-khoga" class="btn-qty">−</button>
+        <div id="qty-khoga" class="qty-text">1</div>
+        <button id="btn-plus-khoga" class="btn-qty">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEM 3 -->
+  <div id="cart-item-fruit" class="cart-item">
+    <div class="item-info">
+      <div class="item-icon">🍉</div>
+      <div>
+        <div class="item-name">Trái cây thập cẩm</div>
+        <div class="item-price">60.000đ</div>
+      </div>
+    </div>
+    <div>
+      <div id="status-fruit" class="item-status">Chờ xác nhận</div>
+      <div class="qty-box">
+        <button id="btn-minus-fruit" class="btn-qty">−</button>
+        <div id="qty-fruit" class="qty-text">1</div>
+        <button id="btn-plus-fruit" class="btn-qty">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div id="cart-summary">
+    <div class="summary-line"><span>Tạm tính</span><span id="subtotal">285.000đ</span></div>
+    <div class="summary-line"><span>Phí dịch vụ (5%)</span><span id="service-fee">14.250đ</span></div>
+    <div class="summary-total"><span>Tổng cộng</span><span id="total-value">299.250đ</span></div>
+  </div>
+
+  <!-- ACTION -->
+  <button id="btn-confirm">✈ Xác nhận gọi món</button>
+  <button id="btn-continue">Tiếp tục gọi món</button>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACOLIZ BOX - Hộp Karaoke Cao Cấp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/Guest/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <script>
+        $(function() {
+            $("#header-placeholder").load("homeheader.html");
+            $("#footer-placeholder").load("homefooter.html");
+        });
+    </script>
+    <div id="header-placeholder"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="brand-hero">
+                    <img src="assets/brand-logo.png" alt="Macoliz Box">
+                    <span>Macoliz Box</span>
+                </div>
+                <p class="hero-subtitle">WELCOME TO</p>
+                <h1 class="hero-title">MACOLIZ BOX</h1>
+                <span class="hero-badge">Phòng Hát Mini Chuẩn Hàn Quốc</span>
+                <p class="hero-text">Địa điểm karaoke lý tưởng để hát hò và quây hệt những vib nổi tiếng cho chuẩn studio. Tràng âm thanh sáng định cao chuẩn studio.</p>
+                <a href="booking-online.html" class="primary-btn">ĐẶT PHÒNG NGAY</a>
+                <div class="stars">
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <h2 class="section-title">ƯU ĐÃI HẤP DẪN</h2>
+            <div class="offers-grid">
+                <!-- Offer 1 -->
+                <div class="offer-card offer-1">
+                    <div class="offer-content">
+                        <p class="offer-label">KHUYẾN MÃI</p>
+                        <p class="offer-discount">-30%</p>
+                        <p class="offer-text">GIẢM NGAY</p>
+                        <p class="offer-small">Mỗi buổi tối trong tháng</p>
+                    </div>
+                </div>
+
+                <!-- Offer 2 -->
+                <div class="offer-card offer-2">
+                    <div class="offer-pattern">
+                        <span class="star">✦</span><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span>
+                        <span class="star">✦</span><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span>
+                        <span class="star">✦</span><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span>
+                        <span class="star">✦</span><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span>
+                    </div>
+                    <p class="offer-overlay-text">CÓ GÌ MỚI</p>
+                </div>
+
+                <!-- Offer 3 -->
+                <div class="offer-card offer-3">
+                    <div class="offer-content">
+                        <i class="fas fa-beer-mug-empty offer-icon"></i>
+                        <p class="offer-label">ĐỒ UỐNG</p>
+                        <p class="offer-discount">TẶNG 2 BIA</p>
+                        <p class="offer-small">Khi có người hát 4 ngườii tối đó</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="rooms">
+        <div class="container">
+            <h2 class="section-title experience-title">TRẢI NGHIỆM KARAOKE ĐẲNG CẤP</h2>
+            <p class="section-subtitle experience-subtitle">Macoliz Box mang đến không gian phòng hát có chất chuẩn Hàn Quốc với thiết kế hiện đại, âm thanh anh sáng định cao.</p>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=300&fit=crop" alt="Phòng Mini 2-3 Người">
+                    <h3>Phòng Mini 2-3 Người</h3>
+                    <a href="booking-online.html" class="secondary-btn">ĐẶT PHÒNG</a>
+                </div>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=500&h=300&fit=crop" alt="Phòng Couple">
+                    <h3>Phòng Couple</h3>
+                    <a href="booking-online.html" class="secondary-btn">ĐẶT PHÒNG</a>
+                </div>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&h=300&fit=crop" alt="Phòng Party ">
+                    <h3>Phòng Party có Lò Nướng</h3>
+                    <a href="booking-online.html" class="secondary-btn">ĐẶT PHÒNG</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Đăng Nhập Nhân Viên</h2>
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                <button type="submit" class="primary-btn">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

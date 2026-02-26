@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoàn tất đặt phòng | Macoliz Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Guest/booking-online.css">
+</head>
+<body class="booking-online-body">
+    <div class="booking-online-layout">
+        <aside class="booking-online-side">
+            <div class="booking-side-card">
+                <div class="brand">
+                    <img class="brand-logo" src="assets/brand-logo.png" alt="Macoliz Box">
+                    <span class="brand-text">Macoliz Box</span>
+                </div>
+                <p class="brand-desc">
+                    Đơn đặt phòng đã được ghi nhận. Chúng tôi sẽ liên hệ xác nhận trong thời gian sớm nhất.
+                </p>
+                <div class="support">
+                    <h4>HỖ TRỢ ĐẶT PHÒNG</h4>
+                    <div class="support-item">
+                        <span class="support-icon">✉</span>
+                        musicbox.customers@gmail.com
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="booking-online-main">
+            <header class="booking-online-header">
+                <div class="breadcrumb">
+                    <span class="home-icon">🏠</span>
+                    <span>/ Đặt phòng trực tuyến</span>
+                </div>
+                <a class="lookup-btn" href="#lookup-modal">Tra cứu đặt phòng</a>
+            </header>
+
+            <section class="stepper">
+                <div class="step done">
+                    <span>✓</span>
+                    <p>THÔNG TIN ĐẶT PHÒNG</p>
+                </div>
+                <div class="step-line active-line"></div>
+                <div class="step done">
+                    <span>✓</span>
+                    <p>THÔNG TIN LIÊN LẠC</p>
+                </div>
+                <div class="step-line active-line"></div>
+                <div class="step active">
+                    <span>3</span>
+                    <p>HOÀN TẤT</p>
+                </div>
+            </section>
+
+            <section class="complete-hero">
+                <div class="complete-icon">🎤</div>
+                <h2>Yêu cầu đặt phòng của bạn đã được ghi nhận!</h2>
+                <p>Chúng tôi sẽ gọi lại để xác nhận đơn và hướng dẫn nhận phòng.</p>
+            </section>
+
+            <section class="complete-grid">
+                <div class="complete-card">
+                    <h3>Thông tin đặt phòng</h3>
+                    <div class="contact-list">
+                        <div><strong>Macoliz Box Plus Phùng Khoang</strong></div>
+                        <div>Số 18, lô 2, ngõ 67 Phùng Khoang, Hà Nội</div>
+                        <div>Điện thoại liên hệ: 0978 229 697</div>
+                        <div>Phòng 11 (M) - M Box (từ 3-4 người) - Trước 18h</div>
+                        <div>19/02 • Từ 09:45 - Đến 10:30</div>
+                    </div>
+                    <h4>Thông tin liên lạc</h4>
+                    <div class="contact-list">
+                        <div>chi thanh thai</div>
+                        <div>taolanguoivietna@gmail.com</div>
+                        <div>0973 206 816</div>
+                    </div>
+                </div>
+
+                <div class="complete-card">
+                    <h3>QR code nhận phòng</h3>
+                    <div class="complete-qr">
+                        <div class="qr-box">QR</div>
+                        <button class="booking-submit">Tải Booking QR</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="complete-actions">
+                <button class="btn-ghost" id="cancelBookingBtn">Hủy đặt phòng</button>
+                <a class="booking-submit" href="index.html">Về trang chủ</a>
+            </section>
+        </main>
+    </div>
+    <section id="lookup-modal" class="lookup-overlay">
+        <div class="lookup-modal">
+            <a class="lookup-close" href="#">✕</a>
+            <h2>Tra cứu thông tin đặt phòng</h2>
+            <label>Số điện thoại <span class="required">*</span></label>
+            <input type="text" placeholder="Nhập số điện thoại đặt phòng">
+            <a class="lookup-submit" href="booking-lookup.html">Xác nhận</a>
+        </div>
+    </section>
+    <script>
+        document.getElementById('cancelBookingBtn')?.addEventListener('click', () => {
+            const confirmed = window.confirm('Bạn có chắc muốn hủy đặt phòng không?');
+            if (confirmed) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

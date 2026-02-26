@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu đặt phòng | Macoliz Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Guest/booking-online.css">
+</head>
+<body class="booking-online-body">
+    <div class="lookup-page">
+        <div class="lookup-brand">
+            <img src="assets/brand-logo.png" alt="Macoliz Box">
+            <span>Macoliz Box</span>
+        </div>
+        <h1>Tra cứu thông tin đặt phòng</h1>
+
+        <section class="lookup-section">
+            <h2>Thông tin người đặt phòng</h2>
+            <div class="lookup-contact">
+                <div class="lookup-contact-item">👤 chi thanh thai</div>
+                <div class="lookup-contact-item">✉️ taolanguoivietna@gmail.com</div>
+                <div class="lookup-contact-item">📞 0973206816</div>
+            </div>
+        </section>
+
+        <section class="lookup-section">
+            <h2>Danh sách các phòng đã đặt</h2>
+            <div class="lookup-table">
+                <div class="lookup-row lookup-head">
+                    <span>Cơ sở</span>
+                    <span>Phòng</span>
+                    <span>Thời gian hát</span>
+                    <span>Thời lượng hát</span>
+                    <span>Thành tiền</span>
+                    <span>Số điện thoại cơ sở</span>
+                    <span>Thao tác</span>
+                </div>
+                <div class="lookup-row">
+                    <div>
+                        Macoliz Box Phùng Khoang<br>
+                        Số 19, lô 2, ngõ 67 Phùng Khoang
+                    </div>
+                    <div>Phòng 3 (S)</div>
+                    <div>28/02/2026 12:00</div>
+                    <div>105 Phút</div>
+                    <div>87.000 VND</div>
+                    <div>0989 541 469</div>
+                    <div class="lookup-actions">
+                        <button class="lookup-primary">Tải Booking QR</button>
+                        <button class="lookup-outline" id="cancelLookupBtn">Hủy phòng</button>
+                    </div>
+                </div>
+            </div>
+            <div class="lookup-pagination">
+                <span>‹</span>
+                <span class="page-active">1</span>
+                <span>›</span>
+            </div>
+        </section>
+
+        <div class="lookup-home">
+            <a class="lookup-submit" href="index.html">Về trang chủ</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('cancelLookupBtn')?.addEventListener('click', () => {
+            const confirmed = window.confirm('Bạn có chắc muốn hủy đặt phòng không?');
+            if (confirmed) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

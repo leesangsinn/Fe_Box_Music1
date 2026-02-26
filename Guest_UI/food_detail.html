@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macoliz – Chi tiết món (Preview)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Inter, system-ui
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #3a124d, #020617);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    #app {
+      width: 390px;
+      background: #0b1220;
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 0 40px rgba(255, 0, 128, .25);
+    }
+
+    #app-wrapper {
+      width: 390px;
+      background: #0b1220;
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 0 40px rgba(255, 0, 128, .2);
+    }
+
+    /* PAGE */
+    #page-detail {
+      width: 390px;
+      max-width: 100%;
+      padding: 16px 16px 120px;
+    }
+
+    /* HEADER */
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    #btn-back {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #0f172a;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    #header-title {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    /* CART MINI */
+    #cart-mini {
+      position: relative
+    }
+
+    #cart-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #ff3d81;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    /* IMAGE */
+    #product-img {
+      width: 100%;
+      border-radius: 18px;
+      margin: 12px 0;
+      object-fit: cover;
+    }
+
+    /* INFO */
+    #product-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    #product-price {
+      color: #ff3d81;
+      font-weight: 700;
+      margin: 6px 0;
+    }
+
+    /* TAG */
+    #tag-list {
+      display: flex;
+      gap: 6px;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #0f172a;
+      color: #cbd5f5;
+    }
+
+    /* DESC */
+    #product-desc {
+      background: #020617;
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      color: #cbd5f5;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* QUANTITY */
+    #qty-box {
+      margin-top: 14px;
+      background: #0f172a;
+      padding: 12px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #qty-label {
+      font-weight: 600
+    }
+
+    #qty-control {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: #1e293b;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    #qty-value {
+      min-width: 24px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* BOTTOM BAR */
+    #bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 390px;
+      max-width: 100%;
+      padding: 12px;
+      background: linear-gradient(to top, #020617 60%, transparent);
+    }
+
+    #btn-add-cart {
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      border: 1px solid #334155;
+      background: transparent;
+      color: #ff3d81;
+      font-weight: 600;
+    }
+
+    #btn-order-now {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #ff5ea0, #ff3d81);
+      color: #fff;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="page-detail">
+
+      <!-- HEADER -->
+      <div id="header">
+        <button id="btn-back">←</button>
+        <div id="header-title">Chi tiết món</div>
+        <div id="cart-mini">
+          <div id="cart-icon">🛒</div>
+          <div id="cart-count">2</div>
+        </div>
+      </div>
+
+      <!-- IMAGE -->
+      <img id="product-img" src="https://images.unsplash.com/photo-1546069901-eacef0df6022" alt="Product image" />
+
+      <!-- INFO -->
+      <div id="product-name">Bánh Macaron Dâu Tây</div>
+      <div id="product-price">45.000đ</div>
+
+      <!-- TAG -->
+      <div id="tag-list">
+        <div class="tag" id="tag-sweet">Ngọt</div>
+        <div class="tag" id="tag-hot">Bán chạy</div>
+        <div class="tag" id="tag-new">Món mới</div>
+      </div>
+
+      <!-- DESC -->
+      <div id="product-desc">
+        Macaron dâu tây với lớp vỏ giòn nhẹ, nhân kem béo mịn,
+        vị chua ngọt cân bằng – phù hợp dùng tráng miệng hoặc
+        làm quà tặng.
+      </div>
+
+      <!-- QUANTITY -->
+      <div id="qty-box">
+        <div id="qty-label">Số lượng</div>
+        <div id="qty-control">
+          <button class="qty-btn" id="btn-qty-minus">−</button>
+          <div id="qty-value">1</div>
+          <button class="qty-btn" id="btn-qty-plus">+</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- BOTTOM ACTION -->
+  <div id="bottom-bar">
+    <button id="btn-add-cart">Thêm vào giỏ</button>
+    <button id="btn-order-now">Đặt ngay</button>
+  </div>
+
+</body>
+
+</html>
